@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#D4AF37"/>
-    <link rel="manifest" href="./manifest.json">
+    <link rel="manifest" href="{{ site.baseurl }}/manifest.json">
     <title>Lumoura Candle Calculator</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -14,14 +14,14 @@
 <body>
 
     <div id="splash-screen">
-        <img src="./images/lumoura_logo.png" alt="Lumoura Logo" class="logo-image">
+        <img src="{{ site.baseurl }}/images/lumoura_logo.png" alt="Lumoura Logo" class="logo-image">
     </div>
 
     <div id="app-wrapper" class="hidden">
         <header>
             <div class="container header-container">
                 <div class="brand-logo">
-                    <img src="./images/lumoura_logo.png" alt="Lumoura Logo" class="header-logo-image">
+                    <img src="{{ site.baseurl }}/images/lumoura_logo.png" alt="Lumoura Logo" class="header-logo-image">
                 </div>
                 <nav>
                     <button class="nav-btn active" data-view="calculator-view" data-i18n-key="navCalc">Calculator</button>
@@ -79,7 +79,7 @@
                     <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ13">Do I have to use a double boiler?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA13">Yes, you should never melt wax directly on a heat source as it's flammable. A double boiler (or a pot inside a larger pot of water) provides gentle, even heat.</p></div></div>
                     <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ14">How do I choose the right wick?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA14">Wick selection depends on your wax type, container diameter, and fragrance/dye load. It often requires testing. Consult your supplier's wick guide as a starting point.</p></div></div>
                     <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ15">What is 'scent throw'?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA15">'Cold throw' is the scent when the candle is unlit. 'Hot throw' is the scent released when the candle is burning. Curing your candle properly is key to a good hot throw.</p></div></div>
-                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ16">Why did my candle crack?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA16">Cracks are usually caused by the wax cooling too rapidly. Ensure your workspace is free from drafts and the surface you're cooling on isn't too cold.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i1ain-key="faqQ16">Why did my candle crack?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA16">Cracks are usually caused by the wax cooling too rapidly. Ensure your workspace is free from drafts and the surface you're cooling on isn't too cold.</p></div></div>
                     <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ17">Can I reuse old candle jars?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA17">Yes! Clean them thoroughly by freezing the remaining wax (it should pop out) or using a heat gun, then wash with hot, soapy water.</p></div></div>
                     <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ18">What's the best wax for beginners?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA18">Many beginners start with soy wax (like GW 464) because it's natural, cleans up easily with soap and water, and is generally forgiving.</p></div></div>
                     <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ19">Do I need to add any other additives?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA19">Most modern container waxes are pre-blended and don't require additives. Some waxes, like paraffin, can benefit from additives like Vybar for scent retention or Stearin for hardness.</p></div></div>
@@ -89,6 +89,6 @@
         </main>
     </div>
 
-    <script src="./js/main.js"></script>
+    <script src="{{ site.baseurl }}/js/main.js"></script>
 </body>
 </html>
