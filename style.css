@@ -1,0 +1,197 @@
+/* =========== GLOBAL STYLES & THEME VARIABLES =========== */
+:root {
+    --font-family: 'Poppins', sans-serif;
+    --font-family-headings: 'Playfair Display', serif;
+    --primary-color: #B8860B; /* DarkGoldenRod */
+    --primary-hover-color: #DAA520; /* GoldenRod */
+    --background-color: #F5F5DC; /* Beige */
+    --text-color: #4B382A; /* Dark Brown */
+    --card-background-color: #FFFAF0; /* FloralWhite */
+    --border-color: #D2B48C; /* Tan */
+    --shadow-color: rgba(75, 56, 42, 0.1);
+}
+
+[data-theme='dark'] {
+    --primary-color: #DAA520; /* GoldenRod */
+    --primary-hover-color: #B8860B; /* DarkGoldenRod */
+    --background-color: #1a1a1a; /* Very Dark Gray */
+    --text-color: #F5F5DC; /* Beige */
+    --card-background-color: #2a2a2a; /* Darker Gray */
+    --border-color: #444;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: var(--font-family); color: var(--text-color);
+    background-color: var(--background-color); transition: background-color 0.3s, color 0.3s;
+    line-height: 1.6;
+}
+h1, h2 { font-family: var(--font-family-headings); }
+
+/* =========== SPLASH SCREEN =========== */
+#splash-screen {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: var(--card-background-color);
+    display: flex; justify-content: center; align-items: center; z-index: 100;
+    opacity: 1; transition: opacity 0.5s ease-out;
+}
+#splash-screen .logo-image { max-width: 450px; animation: fadeIn 1.5s ease-in-out; }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+/* =========== MAIN APP LAYOUT =========== */
+.container { max-width: 600px; margin: 0 auto; padding: 20px; }
+#app-wrapper { min-height: 100vh; }
+header {
+    background-color: var(--card-background-color); box-shadow: 0 2px 8px var(--shadow-color);
+    padding: 10px 0; margin-bottom: 30px; border-bottom: 1px solid var(--border-color);
+}
+.header-container { display: flex; justify-content: space-between; align-items: center; }
+.brand-logo .header-logo-image { display: block; max-height: 150px; } /*<-- LOGO SIZE INCREASED*/
+nav .nav-btn {
+    font-family: var(--font-family); font-size: 16px; padding: 8px 16px; border: 1px solid transparent;
+    background-color: transparent; color: var(--text-color); cursor: pointer; border-radius: 8px;
+    transition: all 0.3s; font-weight: 600;
+}
+nav .nav-btn.active, nav .nav-btn:hover { background-color: var(--primary-color); color: white; }
+
+/* =========== HELPER CLASSES =========== */
+.hidden { display: none !important; }
+.view { display: none; }
+.view.active { display: block; animation: viewFadeIn 0.5s ease-in-out; }
+@keyframes viewFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* =========== FORM & INPUT STYLES =========== */
+.input-group { margin-bottom: 25px; }
+.input-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-color); }
+input[type="number"], select {
+    width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color);
+    background-color: var(--card-background-color); color: var(--text-color); font-size: 16px;
+    font-family: var(--font-family); transition: border-color 0.3s, box-shadow 0.3s;
+}
+input[type="number"]:focus, select:focus {
+    outline: none; border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-color)20;
+}
+.preset-buttons { display: flex; gap: 10px; margin-bottom: 15px; }
+.preset-buttons .preset {
+    flex-grow: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color);
+    background-color: var(--card-background-color); color: var(--text-color); font-size: 14px;
+    font-weight: 600; cursor: pointer; transition: all 0.3s;
+}
+.preset-buttons .preset.active, .preset-buttons .preset:hover {
+    background-color: var(--primary-color); color: white; border-color: var(--primary-color);
+}
+#calculateBtn {
+    width: 100%; padding: 15px; border-radius: 8px; border: none;
+    background-color: var(--primary-color); color: white; font-size: 18px; font-weight: 700;
+    cursor: pointer; transition: background-color 0.3s, transform 0.2s;
+}
+#calculateBtn:hover { background-color: var(--primary-hover-color); transform: translateY(-2px); }
+#calculateBtn.calculating { animation: pulse 0.5s; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(0.98); } 100% { transform: scale(1); } }
+
+/* =========== RANGE SLIDER STYLES =========== */
+input[type="range"] { -webkit-appearance: none; width: 100%; height: 8px; background: var(--border-color); border-radius: 5px; outline: none; margin-bottom: 10px; }
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: var(--primary-color);
+    border-radius: 50%; cursor: pointer; border: 4px solid var(--card-background-color);
+    box-shadow: 0 0 5px var(--shadow-color);
+}
+input[type="range"]::-moz-range-thumb {
+    width: 22px; height: 22px; background: var(--primary-color); border-radius: 50%; cursor: pointer;
+    border: 4px solid var(--card-background-color);
+}
+#fragranceValue { display: block; text-align: center; font-weight: 600; font-size: 16px; color: var(--primary-color); }
+
+/* =========== RESULTS & INFO BOX =========== */
+.info-box {
+    padding: 15px; background-color: var(--primary-color)15;
+    border-left: 4px solid var(--primary-color); border-radius: 0 8px 8px 0;
+    margin-bottom: 25px; transition: all 0.4s ease; transform: translateX(-20px); opacity: 0;
+}
+.info-box.visible { transform: translateX(0); opacity: 1; }
+#results {
+    background-color: var(--card-background-color); border-radius: 12px; padding: 25px;
+    margin-top: 30px; box-shadow: 0 4px 15px var(--shadow-color);
+}
+#results h2 { text-align: center; margin-bottom: 20px; }
+.result-item {
+    display: flex; justify-content: space-between; font-size: 18px; margin-bottom: 15px;
+    opacity: 0; animation: resultFadeIn 0.5s ease forwards;
+}
+.result-item:nth-child(2) { animation-delay: 0.1s; }
+.result-item:nth-child(3) { animation-delay: 0.2s; }
+.result-item:nth-child(5) { animation-delay: 0.3s; }
+@keyframes resultFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.result-item .value { font-weight: 700; }
+.result-item.total { font-size: 22px; font-weight: 700; color: var(--primary-color); }
+#results hr { border: none; height: 1px; background-color: var(--border-color); margin: 15px 0; }
+
+/* =========== SETTINGS & THEME TOGGLE =========== */
+.settings { display: flex; align-items: center; gap: 15px; }
+.lang-btn {
+    width: 35px; height: 35px; border-radius: 50%; border: 1px solid var(--border-color);
+    background: transparent; color: var(--text-color); font-weight: 600; cursor: pointer;
+    transition: all 0.3s ease;
+}
+.lang-btn.active, .lang-btn:hover { background: var(--primary-color); color: white; border-color: var(--primary-color); }
+.theme-switch { position: relative; display: inline-block; width: 50px; height: 28px; }
+.theme-switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--border-color); transition: .4s; border-radius: 28px;
+}
+.slider:before {
+    position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px;
+    background-color: white; transition: .4s; border-radius: 50%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23B8860B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>');
+    background-repeat: no-repeat; background-position: center;
+}
+input:checked + .slider { background-color: var(--primary-color); }
+input:checked + .slider:before {
+    transform: translateX(22px);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>');
+}
+
+/* =========== FAQ ACCORDION =========== */
+.faq-item {
+    background: var(--card-background-color); border-radius: 8px; margin-bottom: 10px;
+    box-shadow: 0 2px 4px var(--shadow-color); border: 1px solid var(--border-color);
+}
+.faq-question {
+    padding: 15px 20px; font-weight: 600; cursor: pointer; display: flex;
+    justify-content: space-between; align-items: center;
+}
+.faq-toggle { font-size: 24px; font-weight: 300; transition: transform 0.3s ease; }
+.faq-answer { max-height: 0; overflow: hidden; transition: all 0.4s ease-out; }
+.faq-answer p { padding: 0 20px 0 20px; }
+.faq-item.active .faq-answer { max-height: 200px; padding-bottom: 20px; }
+.faq-item.active .faq-toggle { transform: rotate(45deg); }
+
+/* =========== BACKGROUND LOGO WATERMARK =========== */
+main {
+    position: relative; /* This is needed for the watermark to position correctly */
+    z-index: 1;
+}
+
+main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Set the logo as the background */
+    background-image: url('../images/lumoura_logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 300px; /* Adjust size of the watermark logo */
+
+    /* Set the transparency */
+    opacity: 0.15; /* Adjust this value from 0.0 to 1.0 */
+
+    /* Place the watermark behind the content */
+    z-index: -1;
+}

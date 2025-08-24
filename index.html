@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#D4AF37"/>
+    <link rel="manifest" href="manifest.json">
+    <title>Lumoura Candle Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="splash-screen">
+        <img src="images/lumoura_logo.png" alt="Lumoura Logo" class="logo-image">
+    </div>
+
+    <div id="app-wrapper" class="hidden">
+        <header>
+            <div class="container header-container">
+                <div class="brand-logo">
+                    <img src="images/lumoura_logo.png" alt="Lumoura Logo" class="header-logo-image">
+                </div>
+                <nav>
+                    <button class="nav-btn active" data-view="calculator-view" data-i18n-key="navCalc">Calculator</button>
+                    <button class="nav-btn" data-view="faq-view" data-i18n-key="navFaq">FAQ</button>
+                </nav>
+                <div class="settings">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="hi">हि</button>
+                    <label class="theme-switch">
+                        <input type="checkbox" id="themeToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="calculator-view" class="view active">
+                <div class="container">
+                    <div class="input-group"><label for="waterWeight" data-i18n-key="waterWeightLabel">Water Weight (grams)</label><input type="number" id="waterWeight" data-i18n-key="waterWeightPlaceholder" placeholder="e.g., 250"></div>
+                    <div class="input-group"><label for="waxType" data-i18n-key="waxTypeLabel">Select Wax Type</label><select id="waxType"><option value="" data-i18n-key="selectWaxOption">-- Select a Wax --</option><option value="soy">Soy Wax</option><option value="paraffin">Paraffin Wax</option><option value="beeswax">Beeswax</option><option value="coconut">Coconut Wax</option></select></div>
+                    <div id="waxInfo" class="info-box hidden"></div>
+                    <div class="input-group"><label for="fragranceLoad" data-i18n-key="fragranceLoadLabel">Fragrance Load</label><div class="preset-buttons"><button class="preset" data-value="0.06">6%</button><button class="preset active" data-value="0.08">8%</button><button class="preset" data-value="0.10">10%</button></div><input type="range" id="fragranceLoad" min="0" max="15" value="8" step="0.5"><span id="fragranceValue">8.0%</span></div>
+                    <button id="calculateBtn" data-i18n-key="calculateBtn">Calculate</button>
+                </div>
+            </section>
+
+            <section id="results" class="hidden">
+                <div class="container">
+                    <h2 data-i18n-key="resultsTitle">Your Recipe</h2>
+                    <div class="result-item"><span data-i18n-key="waxWeightLabelResult">Wax Weight:</span><span id="waxResult" class="value"></span></div>
+                    <div class="result-item"><span data-i18n-key="fragranceWeightLabelResult">Fragrance Weight:</span><span id="fragranceResult" class="value"></span></div>
+                    <hr>
+                    <div class="result-item total"><span data-i18n-key="totalWeightLabelResult">Total Weight:</span><span id="totalResult" class="value"></span></div>
+                </div>
+            </section>
+
+            <section id="faq-view" class="view">
+                <div class="container">
+                    <h1 data-i18n-key="faqTitle">Frequently Asked Questions</h1>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ0">How do I use this calculator?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA0">1. Weigh your empty candle container (mould/jar).<br>2. Fill it with water to your desired fill-height.<br>3. Weigh it again. The difference is the water weight.<br>4. Enter this weight, select your wax, choose your fragrance load, and click calculate!</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqHowTitle">How does the calculator work?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqHowDesc">The calculator uses the weight of water a container can hold and the specific density of the selected wax to determine the total weight of wax and fragrance needed to fill that same volume.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ1">What is 'Fragrance Load'?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA1">Fragrance Load (FO) is the percentage of fragrance oil relative to the weight of your wax. A 6-10% load is standard for most waxes.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ2">What does 'Cure Time' mean?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA2">Curing is the time required for the wax and fragrance oil to bind together for the best scent throw. This can range from 3 days to 2 weeks depending on the wax.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ3">Why is my candle top bumpy or rough?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA3">This is common with natural waxes like soy. It's often caused by the wax cooling too quickly. Try warming your jars before pouring or controlling the room temperature.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ4">What is 'tunnelling'?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA4">Tunnelling is when the wick only melts a small diameter of wax in the center, leaving a ring of hard wax on the outside. It's usually caused by a wick that is too small for the container diameter.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ5">What are 'wet spots'?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA5">These are patches where the wax has pulled away from the glass. It's a cosmetic issue caused by wax shrinkage during cooling and doesn't affect the burn.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ6">At what temperature should I add fragrance oil?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA6">This depends on the wax, but a general rule is around 85°C (185°F). Adding it too hot can burn off the scent; too cold and it may not bind properly.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ7">At what temperature should I pour my wax?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA7">Pouring temperature also varies by wax type. A cooler pour (around 55-60°C or 130-140°F) often results in smoother tops for soy wax.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ8">What is a 'melt pool'?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA8">The melt pool is the layer of liquid wax that forms around the wick as the candle burns. For the first burn, you should let it reach the edges of the container to prevent tunnelling.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ9">What's the difference between essential oils and fragrance oils?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA9">Fragrance oils are synthetic and specifically designed for high heat in candles. Essential oils are natural but can be volatile and may not produce a strong scent in a candle.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ10">Why is my candle smoking?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA10">A smoking wick is often too long. Trim your wick to about 1/4 inch (6mm) before each burn. It can also be a sign of a draft or too much fragrance oil.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ11">Can I use crayons to color my candles?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA11">It's not recommended. The pigments in crayons can clog the wick and create a fire hazard. Always use candle-specific dyes.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ12">What is 'frosting' on soy wax?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA12">Frosting is the formation of tiny white crystals on the surface of natural waxes. It's a normal characteristic of soy wax and doesn't impact the candle's performance.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ13">Do I have to use a double boiler?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA13">Yes, you should never melt wax directly on a heat source as it's flammable. A double boiler (or a pot inside a larger pot of water) provides gentle, even heat.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ14">How do I choose the right wick?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA14">Wick selection depends on your wax type, container diameter, and fragrance/dye load. It often requires testing. Consult your supplier's wick guide as a starting point.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ15">What is 'scent throw'?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA15">'Cold throw' is the scent when the candle is unlit. 'Hot throw' is the scent released when the candle is burning. Curing your candle properly is key to a good hot throw.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ16">Why did my candle crack?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA16">Cracks are usually caused by the wax cooling too rapidly. Ensure your workspace is free from drafts and the surface you're cooling on isn't too cold.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ17">Can I reuse old candle jars?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA17">Yes! Clean them thoroughly by freezing the remaining wax (it should pop out) or using a heat gun, then wash with hot, soapy water.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ18">What's the best wax for beginners?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA18">Many beginners start with soy wax (like GW 464) because it's natural, cleans up easily with soap and water, and is generally forgiving.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ19">Do I need to add any other additives?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA19">Most modern container waxes are pre-blended and don't require additives. Some waxes, like paraffin, can benefit from additives like Vybar for scent retention or Stearin for hardness.</p></div></div>
+                    <div class="faq-item"><div class="faq-question"><span data-i18n-key="faqQ20">Is candle making safe?</span><span class="faq-toggle">+</span></div><div class="faq-answer"><p data-i18n-key="faqA20">It is safe if you follow precautions. Never leave melting wax unattended, keep a fire extinguisher nearby, and work in a well-ventilated area away from children and pets.</p></div></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
